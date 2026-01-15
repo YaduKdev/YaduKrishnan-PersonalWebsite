@@ -1,6 +1,6 @@
 import About from "../../sections/About/About"
+import Contact from "../../sections/Contact/Contact"
 import Hero from "../../sections/Hero/Hero"
-import Marquee from "../../sections/Marquee/Marquee"
 import ProjectsPreview from "../../sections/ProjectsPreview/ProjectsPreview"
 import Services from "../../sections/Services/Services"
 
@@ -11,7 +11,7 @@ const Home = () => {
       <About />
       <Services />
       <ProjectsPreview />
-      <Marquee />
+      <Contact />
     </>
   )
 }

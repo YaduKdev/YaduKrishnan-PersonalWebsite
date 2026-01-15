@@ -25,6 +25,10 @@
     body {
         @apply bg-black text-white font-body text-xl overflow-x-clip;
     }
+
+    h3 {
+        @apply font-heading font-medium uppercase text-2xl lg:text-4xl;
+    }
 }
 
 @layer components {
