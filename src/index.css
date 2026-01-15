@@ -79,6 +79,34 @@
         background: linear-gradient(#fff, #fff) padding-box,
                     var(--color-gradient) border-box;
     }
+
+    @keyframes marquee {
+        0% {transform: translateX(-100%)}
+        100% {transform: translateX(0)}
+    }
+
+    @keyframes star-animation {
+        0% {transform: rotate(0deg)}
+        100% {transform: rotate(360deg)}
+    }
+
+    .marquee-animation {
+        animation: marquee 15s linear infinite;
+    }
+
+    .marquee-animation-reverse {
+        animation: marquee 15s linear infinite reverse;
+    }
+
+    .marquee-star {
+        animation: star-animation 10s linear infinite;
+        transform-origin: center;
+    }
+
+    .marquee-star-reverse {
+        animation: star-animation 10s linear infinite reverse;
+        transform-origin: center;
+    }
 }
 
 @media (min-width: 1024px) {

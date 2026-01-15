@@ -8,7 +8,7 @@ const Hero = () => {
     <>
         <div className="bg-[#9F3200]">
             <div className="main-container h-screen lg:py-16 flex flex-col lg:justify-center items-center max-lg:pt-40">
-              <div className='flex flex-col justify-center items-center'>
+              <div className='flex flex-col justify-center items-center mt-30 lg:mt-0'>
                 <h1 className="text-2xl md:text-3xl uppercase font-heading font-semibold">Yadu Krishnan</h1>
                 <h2 className="text-2xl md:text-6xl font-heading font-bold leading-none tracking-tight">Full-stack Developer</h2>
               </div>

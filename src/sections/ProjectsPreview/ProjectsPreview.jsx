@@ -11,7 +11,7 @@ const ProjectsPreview = () => {
         </div>
         <Button text="View All" className="bg-white text-black hover:bg-gray-400 border-white hover:border-gray-400" />
       </div>
-      <div className="flex gap-4 lg:gap-8 ms-4 lg:ms-[40%] mt-6">
+      <div className="flex gap-4 lg:gap-8 ms-4 lg:ms-[40%] mt-6 overflow-hidden">
         {
           projects.map(({id, name, image, link}) => (
             <a href={link} key={id} className="relative rounded-2xl w-full min-w-85 lg:min-w-xl h-64 lg:h-96 block overflow-hidden group">

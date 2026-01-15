@@ -4,7 +4,7 @@ const About = () => {
       <div className='h-screen bg-black rounded-t-[60px]'>
         <div className='about-text main-container py-4 gap-3 md:gap-5 lg:py-12 h-full flex flex-col justify-center items-center font-heading text-xl md:text-2xl xl:text-4xl leading-tight'>
           <p>
-            &nbsp;I'm Yadu Krishnan, a highly motivated and aspiring web developer with a strong passion for creating innovative and user-friendly digital experiences.
+            &nbsp;I'm Yadu Krishnan, a highly motivated and aspiring web developer located in Mumbai, India with a strong passion for creating innovative and user-friendly digital experiences.
           </p>
           <p>
             &nbsp;On the frontend, I excel with the React JS and utilize Angular, complemented by strong proficiency in design and styling using Sass and 
