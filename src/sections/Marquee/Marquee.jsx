@@ -1,9 +1,9 @@
-import star from '/star.svg';
+import star from '/star-black.svg';
 
 const Marquee = () => {
   return (
     <>
-      <div className="py-28 lg:py-44 overflow-hidden">
+      <div className="py-28 lg:py-44 overflow-hidden text-black bg-[#E9E9F0]">
         {/* Marquee 1 */}
         <div className="whitespace-nowrap marquee-animation text-6xl lg:text-[7vw] font-heading font-semibold leading-none tracking-tight">
           <span className="flex gap-4 lg:gap-8 mx-8">
