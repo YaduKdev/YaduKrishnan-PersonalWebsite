@@ -29,8 +29,8 @@ const Hero = () => {
         <div className="bg-[#f35325]">
             <div ref={heroRef} className="main-container h-screen lg:py-16 flex flex-col xl:flex-row md:justify-center items-center max-lg:pt-40">
               <div className='flex flex-col justify-center items-center mt-30 lg:mt-0 xl:w-1/2 lg:gap-4'>
-                <h1 className="text-2xl md:text-3xl xl:text-4xl uppercase font-heading font-semibold">Yadu Krishnan</h1>
-                <h2 className="text-2xl md:text-6xl xl:text-5xl xl:text-center font-heading font-bold leading-none tracking-tight uppercase">Web Developer</h2>
+                <h1 onMouseEnter={() =>gsap.to('#cursor', {scale: 8, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="text-2xl md:text-3xl xl:text-5xl uppercase font-heading font-semibold">Yadu Krishnan</h1>
+                <h2 onMouseEnter={() =>gsap.to('#cursor', {scale: 8, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="text-2xl md:text-6xl xl:text-6xl xl:text-center font-heading font-bold leading-none tracking-tight uppercase">Web Developer</h2>
                 <Button text="Download CV" className='border-[#4D1601] hover:border-[#691f01] bg-[#4D1601] hover:bg-[#691f01] hidden xl:flex xl:text-center' />
               </div>
               <div className='w-full h-[35%] sm:h-1/2 lg:h-3/5 xl:w-3/5'>

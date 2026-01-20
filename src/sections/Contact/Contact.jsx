@@ -11,7 +11,7 @@ const Contact = () => {
 
   useGSAP(() => {
     gsap.from(contactRef.current, {
-      backgroundColor: "#E9E9F0",
+      backgroundColor: "#ffffff",
       scrollTrigger: {
         trigger: contactRef.current,
         start: "center bottom",
@@ -24,9 +24,9 @@ const Contact = () => {
   return (
     <>
       <div ref={contactRef}>
-        <div className="main-container py-20 lg:py-28 h-full flex flex-col gap-8 justify-center items-center text-[#E9E9F0]">
-          <h4 className="max-w-6xl text-2xl lg:text-5xl text-center leading-tight">Freelance, Collaborations & Full-time opportunities. Let's Work Together!</h4>
-          <Button text="Contact Me" className="bg-green-800 text-zinc-200 hover:bg-green-700 border-green-800 hover:border-green-700" />
+        <div className="main-container py-20 lg:py-28 h-full flex flex-col gap-8 justify-center items-center">
+          <h4 onMouseEnter={() =>gsap.to('#cursor', {scale: 8, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="max-w-6xl text-2xl lg:text-5xl text-center leading-tight">Freelance, Collaborations & Full-time opportunities. Let's Work Together!</h4>
+          <Button text="Contact Me" className="bg-[#81bc06] hover:bg-[#abf707] text-black hover:text-zinc-900 border-[#81bc06] hover:border-[#abf707]" />
         </div>
       </div>
     </>

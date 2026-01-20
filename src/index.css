@@ -23,7 +23,7 @@
 
 @layer base {
     body {
-        @apply bg-black text-white font-body text-xl overflow-x-clip;
+        @apply bg-black text-white font-body text-xl overflow-x-clip cursor-[url('/cursor.png'),auto];
     }
 
     h3 {
