@@ -4,7 +4,7 @@ import {gsap} from 'gsap';
 const Marquee = () => {
   return (
     <>
-      <div className="py-28 lg:py-44 overflow-hidden text-black bg-white">
+      <div className="py-28 lg:py-44 overflow-hidden text-black bg-white cursor-[url('/cursor-black.png'),pointer]">
         {/* Marquee 1 */}
         <div className="whitespace-nowrap marquee-animation text-6xl lg:text-[7vw] font-heading font-semibold leading-none tracking-tight">
           <span onMouseEnter={() =>gsap.to('#cursor', {scale: 8, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="flex gap-4 lg:gap-8 mx-8">

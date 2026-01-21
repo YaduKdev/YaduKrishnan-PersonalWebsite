@@ -23,7 +23,7 @@ const Contact = () => {
 
   return (
     <>
-      <div ref={contactRef}>
+      <div id="contact" ref={contactRef}>
         <div className="main-container py-20 lg:py-28 h-full flex flex-col gap-8 justify-center items-center">
           <h4 onMouseEnter={() =>gsap.to('#cursor', {scale: 8, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="max-w-6xl text-2xl lg:text-5xl text-center leading-tight">Freelance, Collaborations & Full-time opportunities. Let's Work Together!</h4>
           <Button text="Contact Me" className="bg-[#81bc06] hover:bg-[#abf707] text-black hover:text-zinc-900 border-[#81bc06] hover:border-[#abf707]" />

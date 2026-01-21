@@ -51,10 +51,10 @@ const Navigation = () => {
 
 
         <div className={`fixed z-20 inset-0 bg-black text-white flex flex-col items-center justify-center gap-8 text-[10vw] lg:text-[6vw] font-heading font-medium uppercase transition-transform duration-500 ${menuOpen? "translate-y-0": "-translate-y-full"}`}>
-            <Link to="/" onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="lg:opacity-60 hover:opacity-100 cursor-[url('/pointer-96.png'),pointer]" onClick={() => setMenuOpen(false)}>Home</Link>
-            <Link to="/projects" onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="lg:opacity-60 hover:opacity-100 cursor-[url('/pointer-96.png'),pointer]" onClick={() => setMenuOpen(false)}>Projects</Link>
-            <a href="" onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="lg:opacity-60 hover:opacity-100 cursor-[url('/pointer-96.png'),pointer]" onClick={() => setMenuOpen(false)}>TOOLKIT</a>
-            <a href="" onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="lg:opacity-60 hover:opacity-100 cursor-[url('/pointer-96.png'),pointer]" onClick={() => setMenuOpen(false)}>Contact</a>
+            <Link to="/" onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="lg:opacity-60 hover:opacity-100 cursor-[url('/pointer-white-96.png'),pointer]" onClick={() => setMenuOpen(false)}>Home</Link>
+            <Link to="/projects" onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="lg:opacity-60 hover:opacity-100 cursor-[url('/pointer-white-96.png'),pointer]" onClick={() => setMenuOpen(false)}>Projects</Link>
+            <Link to="/#toolkit" onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="lg:opacity-60 hover:opacity-100 cursor-[url('/pointer-white-96.png'),pointer]" onClick={() => setMenuOpen(false)}>TOOLKIT</Link>
+            <Link to="/#contact" onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="lg:opacity-60 hover:opacity-100 cursor-[url('/pointer-white-96.png'),pointer]" onClick={() => setMenuOpen(false)}>Contact</Link>
         </div>
     </>
   )

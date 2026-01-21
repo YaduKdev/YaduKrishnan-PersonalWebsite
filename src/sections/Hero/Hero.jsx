@@ -1,4 +1,4 @@
-import { Environment, OrbitControls } from '@react-three/drei'
+import { Center, Environment, OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import LaptopContainer from './LaptopContainer'
 import Button from "../../components/Button/Button"
@@ -34,13 +34,15 @@ const Hero = () => {
                 <Button text="Download CV" className='border-[#4D1601] hover:border-[#691f01] bg-[#4D1601] hover:bg-[#691f01] hidden xl:flex xl:text-center' />
               </div>
               <div className='w-full h-[35%] sm:h-1/2 lg:h-3/5 xl:w-3/5'>
-                <Canvas camera={{fov: 12, position: [0, -10, 220]}}>
-                  <OrbitControls />
+                <Canvas camera={{fov: 15, position: [0, 0, 110]}}>
+                  <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
                   <Environment files={["/studio_small_09_4k.exr",]} />
-                  <LaptopContainer />
+                  <Center>
+                    <LaptopContainer />
+                  </Center>
                 </Canvas>
               </div>
-              <Button text="Download CV" className='border-[#4D1601] hover:border-[#691f01] bg-[#4D1601] hover:bg-[#691f01] xl:hidden' />
+              <Button text="Download CV" className='border-[#4D1601] hover:border-[#691f01] bg-[#4D1601] hover:bg-[#691f01] mt-6 xl:hidden' />
             </div>
         </div>
     </>

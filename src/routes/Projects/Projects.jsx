@@ -11,11 +11,11 @@ const Projects = () => {
           <div className="grid md:grid-cols-2 gap-8 mt-8 lg:mt-16">
             {
               projects.map(({id, name, image, link}) => (
-                <Link to={link} onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} href={link} key={id} className="overflow-hidden flex flex-col cursor-[url('/pointer-96.png'),pointer]">
-                  <div className="overflow-hidden group rounded-2xl h-full">
+                <Link to={link} onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} href={link} key={id} className="overflow-hidden flex flex-col group cursor-[url('/pointer-white-96.png'),pointer]">
+                  <div className="overflow-hidden rounded-2xl h-full">
                     <img src={image} alt={name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
                   </div>
-                  <span className="uppercase leading-[1.4] lg:text-2xl font-heading mt-4">{name}</span>
+                  <span className="uppercase leading-[1.4] lg:text-2xl font-heading mt-4 group-hover:text-zinc-400">{name}</span>
                 </Link>
               ))
             }
