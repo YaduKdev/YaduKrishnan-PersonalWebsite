@@ -21,7 +21,7 @@ const Cursor = () => {
     }, []);
 
   return (
-    <div id="cursor" className="hidden lg:flex fixed top-0 left-0 h-5 w-5 bg-white rounded-full z-99 pointer-events-none mix-blend-difference" />
+    <div id="cursor" className="hidden lg:flex fixed top-0 left-0 h-5 w-5 bg-white rounded-full z-150 pointer-events-none mix-blend-difference" />
   )
 }
 

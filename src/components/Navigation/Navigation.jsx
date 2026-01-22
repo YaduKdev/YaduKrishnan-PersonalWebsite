@@ -20,12 +20,21 @@ const Navigation = () => {
         };
     
         window.addEventListener('scroll', handleScroll);
+
+      if (menuOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflowY = 'auto';
+        document.body.style.overflowX = 'hidden';
+      }
     
         // Clean up function
         return () => {
           window.removeEventListener('scroll', handleScroll);
+          document.body.style.overflowY = 'auto';
+          document.body.style.overflowX = 'hidden';
         };
-      }, []);
+      }, [menuOpen]);
 
     useGSAP(() => {
         gsap.from(navRef.current, {
