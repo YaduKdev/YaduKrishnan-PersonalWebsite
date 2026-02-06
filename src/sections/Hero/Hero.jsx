@@ -54,9 +54,6 @@ const Hero = () => {
                   Download CV
                 </button>
               </a>
-              <button onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="uppercase font-heading border-2 text-center min-w-51.25 px-8 lg:px-12 text-lg md:text-xl py-2 lg:py-3 rounded-full transition-colors ease-in-out duration-200 cursor-[url('/pointer.png'),pointer] border-[#4D1601] hover:border-[#691f01] bg-[#4D1601] hover:bg-[#691f01] mt-6 xl:hidden">
-                Download CV
-              </button>
             </div>
         </div>
     </>

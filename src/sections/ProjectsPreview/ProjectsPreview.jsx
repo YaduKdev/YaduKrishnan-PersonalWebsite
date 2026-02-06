@@ -4,7 +4,6 @@ import { projects } from "../../Data/ProjectsData"
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Link } from "react-router-dom";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -43,11 +42,11 @@ const ProjectsPreview = () => {
       <div ref={projectRef} className="hidden lg:block">
         <div className="hidden lg:flex gap-5 ms-[40%] mt-6">
           {
-            projects.slice(4).map(({id, name, image, link}) => (
-              <Link onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} to={link} key={id} className="relative rounded-2xl w-full min-w-xl h-96 block overflow-hidden group cursor-[url('/pointer-white-96.png'),pointer]">
+            projects.slice(0,4).map(({id, name, image, link, color="white", secondaryColor="black"}) => (
+              <a target="_blank" rel="noopener noreferrer" onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} href={`${link}`} key={id} className="relative rounded-2xl w-full min-w-xl h-96 block overflow-hidden group cursor-[url('/pointer-white-96.png'),pointer]">
                 <img src={image} alt={name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                <span className="absolute top-4 right-4 bg-white text-black uppercase leading-[1.4] font-heading px-5 py-1 rounded-full text-sm lg:text-lg">{name}</span>
-              </Link>
+                <span style={{ backgroundColor: color, color: secondaryColor }} className="absolute top-4 right-4 uppercase leading-[1.4] font-heading px-5 py-1 rounded-full text-sm lg:text-lg">{name}</span>
+              </a>
             ))
           }
         </div>
@@ -55,11 +54,11 @@ const ProjectsPreview = () => {
       <div className="px-5 lg:hidden">
         <div className="flex flex-col md:flex-row flex-wrap gap-4 mt-6 justify-center items-center lg:hidden">
           {
-            projects.slice(4).map(({id, name, image, link}) => (
-              <Link onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} to={link} key={id} className="relative rounded-2xl w-85 h-64 sm:w-/12 sm:h-1/2 block overflow-hidden group cursor-[url('/pointer-white-96.png'),pointer]">
+            projects.slice(0,4).map(({id, name, image, link, color="white", secondaryColor="black"}) => (
+              <a target="_blank" rel="noopener noreferrer" onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} href={`${link}`} key={id} className="relative rounded-2xl w-85 h-64 sm:w-/12 sm:h-1/2 block overflow-hidden group cursor-[url('/pointer-white-96.png'),pointer]">
                 <img src={image} alt={name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                <span className="absolute top-4 right-4 bg-white text-black uppercase leading-[1.4] font-heading px-5 py-1 rounded-full text-sm lg:text-lg">{name}</span>
-              </Link>
+                <span style={{ backgroundColor: color, color: secondaryColor }} className="absolute top-4 right-4 bg-white text-black uppercase leading-[1.4] font-heading px-5 py-1 rounded-full text-sm lg:text-lg">{name}</span>
+              </a>
             ))
           }
           <Button link="/projects" text="View All" className="md:hidden bg-[#05a6f0] text-black hover:bg-[#04b0ff] border-[#05a6f0] hover:border-[#04b0ff] mt-5" />

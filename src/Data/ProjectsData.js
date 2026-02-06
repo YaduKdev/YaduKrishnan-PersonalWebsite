@@ -2,49 +2,82 @@ export const projects = [
     {
         id: 1,
         name: "Music Mate",
+        description: "Online Music/Chat App",
+        toolkit: "MERN, Socket.io",
         image: "/project1.png",
-        link: "music-mate"
+        color: "#0c5bd6",
+        secondaryColor: "#ffffff",
+        link: "https://musicmate-production.up.railway.app/",
+        Code: "https://github.com/YaduKdev/musicmate"
     },
     {
         id: 2,
         name: "Wearhaus",
+        description: "Online Clothing App",
+        toolkit: "MEAN, Razorpay",
         image: "/project2.png",
-        link: "wearhaus"
+        color: "#5f0f75",
+        secondaryColor: "#ffffff",
+        link: "https://plum-echidna-342435.hostingersite.com/",
+        CodeView: "https://github.com/YaduKdev/wearhaus-view",
+        CodeApi: "https://github.com/YaduKdev/wearhaus-api"
     },
         {
         id: 3,
         name: "Cinematix",
+        description: "Online Ticket Booking App",
+        toolkit: "MERN, Stripe",
         image: "/project3.png",
-        link: "cinematix"
+        color: "#e80000",
+        secondaryColor: "#ffffff",
+        link: "https://magenta-gnat-343856.hostingersite.com/",
+        CodeView: "https://github.com/YaduKdev/cinematix-view",
+        CodeApi: "https://github.com/YaduKdev/cinematix-api"
     },
         {
         id: 4,
-        name: "Nived V.",
+        name: "Nived V. (LIVE)",
+        description: "Portfolio  Website",
+        toolkit: "React",
         image: "/project4.png",
-        link: "nived-v"
+        color: "#ffd033",
+        link: "https://yadukdev.github.io/NivedV/",
+        Code: "https://github.com/YaduKdev/NivedV"
     },
         {
         id: 5,
-        name: "Music Mate",
+        name: "RoboFriendzz",
+        description: "Dynamic Search App",
+        toolkit: "React",
         image: "/project5.png",
-        link: "landing-page"
+        link: "https://yadukdev.github.io/Robo-Friends/",
+        Code: "https://github.com/YaduKdev/Robo-Friends"
     },
         {
         id: 6,
-        name: "Music Mate",
+        name: "Vue Quiz",
+        description: "Quiz App",
+        toolkit: "Vue",
         image: "/project6.png",
-        link: "landing-page"
+        link: "https://yadukdev.github.io/vue-quizapp/",
+        Code: "https://github.com/YaduKdev/vue-quizapp"
     },
         {
         id: 7,
-        name: "Music Mate",
+        name: "Tindog",
+        description: "Tinder for Dogs",
+        toolkit: "HTML, Bootstrap",
         image: "/project7.png",
-        link: "landing-page"
+        link: "https://yadukdev.github.io/tinDog/",
+        Code: "https://github.com/YaduKdev/tinDog"
     },
         {
         id: 8,
-        name: "Music Mate",
+        name: "Startup",
+        description: "Landing Page",
+        toolkit: "HTML, CSS",
         image: "/project8.png",
-        link: "landing-page"
+        link: "https://yadukdev.github.io/Startup/",
+        Code: "https://github.com/YaduKdev/Startup"
     },
 ]

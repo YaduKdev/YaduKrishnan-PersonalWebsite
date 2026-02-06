@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation  } from "react-router-dom";
 
 gsap.registerPlugin(useGSAP);
 
@@ -9,32 +9,42 @@ const Navigation = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const navRef = useRef(null);
-    
-      useEffect(() => {
-        const handleScroll = () => {
-          if (window.scrollY >= 770) {
-            setIsScrolled(true);
-          } else {
-            setIsScrolled(false);
-          }
-        };
-    
-        window.addEventListener('scroll', handleScroll);
+    const location = useLocation();
+    const [currentPath, setCurrentPath] = useState(location.pathname);
 
+    useEffect(() => {
+      setCurrentPath(location.pathname);
+    }, [location]);
+    
+    useEffect(() => {
+      const handleScroll = () => {
+        if (window.scrollY >= 770 && currentPath === "/") {
+          setIsScrolled(true);
+        } else if (window.scrollY >=100 && currentPath !== "/") {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      };
+    
+      window.addEventListener('scroll', handleScroll);
+    
+      // Clean up function
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        document.body.style.overflowY = 'auto';
+        document.body.style.overflowX = 'hidden';
+      };
+    });
+
+    useEffect(() => {
       if (menuOpen) {
         document.body.style.overflow = 'hidden';
       } else {
         document.body.style.overflowY = 'auto';
         document.body.style.overflowX = 'hidden';
       }
-    
-        // Clean up function
-        return () => {
-          window.removeEventListener('scroll', handleScroll);
-          document.body.style.overflowY = 'auto';
-          document.body.style.overflowX = 'hidden';
-        };
-      }, [menuOpen]);
+      }, [menuOpen])
 
     useGSAP(() => {
         gsap.from(navRef.current, {
