@@ -9,9 +9,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Contact = () => {
   const [open, setOpen] = useState(false);
-  const [shouldRender, setShouldRender] = useState(false);
   const contactRef = useRef(null);
-  const scrollPosition = useRef(0);
 
   useGSAP(() => {
     gsap.from(contactRef.current, {
@@ -25,47 +23,30 @@ const Contact = () => {
     })
   })
 
-  const handleOpen = () => {
-    // Save scroll position before opening
-    scrollPosition.current = window.scrollY;
-    
-    setShouldRender(true);
-    // Small delay to let component mount before animating
-    setTimeout(() => {
-      setOpen(true);
-    }, 10);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    // Wait for animation to complete before unmounting
-    setTimeout(() => {
-      setShouldRender(false);
-    }, 500); // Match transition duration
-  };
-
   useEffect(() => {
     if (open) {
-      // Hide scrollbar and prevent scrolling
       document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = '0px'; // Prevent layout shift
-    } else if (!open && shouldRender) {
-      // Restore scrolling
-      document.body.style.overflow = '';
-      document.body.style.paddingRight = '';
+    } else {
+      document.body.style.overflowY = 'auto';
+      document.body.style.overflowX = 'hidden';
     }
-  }, [open, shouldRender]);
+
+    return () => {
+      document.body.style.overflowY = 'auto';
+      document.body.style.overflowX = 'hidden';
+    };
+  }, [open]);
 
   return (
     <>
       <div id="contact" ref={contactRef}>
         <div className="main-container py-20 lg:py-28 h-full flex flex-col gap-8 justify-center items-center">
           <h4 onMouseEnter={() =>gsap.to('#cursor', {scale: 8, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="max-w-6xl text-2xl lg:text-5xl text-center leading-tight">Freelance, Collaborations & Full-time opportunities. Let's Work Together!</h4>
-          <Button click={handleOpen} text="Contact Me" className="bg-[#81bc06] hover:bg-[#abf707] text-black hover:text-zinc-900 border-[#81bc06] hover:border-[#abf707]" />
+          <Button click={() => setOpen(true)} text="Contact Me" className="bg-[#81bc06] hover:bg-[#abf707] text-black hover:text-zinc-900 border-[#81bc06] hover:border-[#abf707]" />
         </div>
       </div>
 
-      {shouldRender && <ContactDialog open={open} onClose={handleClose} />}
+      <ContactDialog open={open} onClose={() => setOpen(false)} />
     </>
   )
 }

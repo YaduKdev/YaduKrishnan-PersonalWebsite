@@ -69,9 +69,9 @@ const ContactDialog = ({open, onClose}) => {
   };
 
   return (
-    <div className={`fixed inset-0 flex justify-center items-center transition-transform duration-500 ${open ? "translate-y-0" : "-translate-y-full"} z-[100000]`}>
-        <div className="relative py-20 lg:py-56 font-body h-full w-full m-auto flex flex-col lg:flex-row justify-center lg:justify-baseline items-center gap-12 shadow bg-black text-white">
-          <div onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="group absolute top-4 right-4 cursor-[url('/pointer.png'),pointer] flex flex-col w-12 h-12 justify-center items-center gap-1.5 z-10" onClick={onClose}>
+    <div className={`fixed inset-0 flex justify-center items-center transition-transform duration-500 ${open? "translate-y-0": "-translate-y-full"} z-[100000]`}>
+        <div className="relative py-56 contact font-body h-full w-full m-auto flex flex-col lg:flex-row justify-center lg:justify-baseline items-center gap-12 shadow bg-black text-white">
+          <div onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="group absolute top-4 right-4 cursor-[url('/pointer.png'),pointer] flex flex-col w-12 h-12 justify-center items-center gap-1.5" onClick={onClose}>
             <span className="inline-block w-10 lg:w-12 h-0.5 bg-white rotate-45 translate-y-1 group-hover:bg-red-500"></span>
             <span className="inline-block w-10 lg:w-12 h-0.5 bg-white -rotate-45 -translate-y-1 group-hover:bg-red-500"></span>
           </div>

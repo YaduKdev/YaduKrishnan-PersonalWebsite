@@ -32,6 +32,14 @@
 }
 
 @layer components {
+    /* This class will be controlled by the Preloader */
+    .preloader-active {
+    overflow: hidden !important;
+    height: 100vh !important;
+    width: 100% !important;
+    position: fixed !important; /* Forces the lock on mobile/Safari */
+    }
+
     .main-container {
         @apply max-w-400 w-full m-auto px-4 lg:px-12;
     }

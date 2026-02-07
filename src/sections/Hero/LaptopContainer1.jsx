@@ -88,13 +88,10 @@ const LaptopContainer = ({ startAnimation = false }) => {
 
     useFrame((state, delta) => {
         if (screenRef.current) {
-            // Clamp delta to prevent large jumps when tab is inactive
-            const clampedDelta = Math.min(delta, 0.1);
-            
             screenRef.current.rotation.x = THREE.MathUtils.lerp(
                 screenRef.current.rotation.x,
                 targetRotation.current,
-                clampedDelta * animationSpeed
+                delta * animationSpeed
             );
         }
     });
