@@ -95,7 +95,17 @@ useEffect(() => {
         <img 
           src="/opening.png" 
           alt="Opening" 
-          className="w-[90%] h-[90%] object-contain"
+          className="w-[90%] h-[90%] object-contain hidden xl:flex"
+        />
+        <img 
+          src="/opening-tab.png" 
+          alt="Opening" 
+          className="w-[90%] h-[90%] object-contain hidden md:flex xl:hidden"
+        />
+        <img 
+          src="/opening-mob.png" 
+          alt="Opening" 
+          className="w-[90%] h-[90%] object-contain md:hidden"
         />
       </div>
     </>

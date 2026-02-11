@@ -37,10 +37,13 @@ const LaptopContainer = ({ startAnimation = false }) => {
         const videoTexture = new THREE.VideoTexture(video);
         videoTexture.minFilter = THREE.LinearFilter;
         videoTexture.magFilter = THREE.LinearFilter;
+        videoTexture.colorSpace = THREE.SRGBColorSpace;
+        videoTexture.format = THREE.RGBAFormat;
         videoTextureRef.current = videoTexture;
 
         if (meshes.matte) {
             meshes.matte.material.map = videoTexture;
+            meshes.matte.material.toneMapped = false;
             meshes.matte.material.emissiveIntensity = 0;
             meshes.matte.material.metalness = 0;
             meshes.matte.material.roughness = 1;
