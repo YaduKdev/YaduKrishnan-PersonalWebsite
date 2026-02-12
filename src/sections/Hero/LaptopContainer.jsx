@@ -29,7 +29,9 @@ const LaptopContainer = ({ startAnimation = false }) => {
         video.loop = true;
         video.muted = true;
         video.playsInline = true;
-        video.play();
+        video.setAttribute('muted', ''); 
+        video.setAttribute('playsinline', ''); 
+        video.play().catch(e => console.error("Video failed to play:", e));
         
         videoRef.current = video;
 
