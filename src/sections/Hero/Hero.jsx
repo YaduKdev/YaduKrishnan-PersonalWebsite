@@ -4,7 +4,7 @@ import LaptopContainer from './LaptopContainer'
 import * as THREE from 'three'
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import cV from '/Yadu Krishnan - CV.pdf';
@@ -13,8 +13,23 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 const Hero = ({ startLaptopAnimation = false }) => {
   const heroRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-    useGSAP(() => {
+  useEffect(() => {
+    // Detect mobile devices
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useGSAP(() => {
+    // Only enable pinning on desktop
+    if (!isMobile) {
       ScrollTrigger.create({
         trigger: heroRef.current,
         start: "top top",
@@ -22,8 +37,9 @@ const Hero = ({ startLaptopAnimation = false }) => {
         pin: true,
         pinSpacing: false,
         scrub: 1
-      })
-    })
+      });
+    }
+  }, [isMobile]);
 
   return (
     <>
@@ -39,11 +55,28 @@ const Hero = ({ startLaptopAnimation = false }) => {
                 </a>
               </div>
               <div className='w-full h-[35%] sm:h-1/2 lg:h-3/5 xl:w-3/5'>
-                <Canvas camera={{fov: 15, position: [0, 0, 110]}}>
-                  <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
+                <Canvas 
+                  camera={{fov: 15, position: [0, 0, 110]}}
+                  gl={{
+                    antialias: !isMobile, // Disable antialiasing on mobile for better performance
+                    powerPreference: "high-performance",
+                    alpha: true, // Enable transparency
+                    stencil: false,
+                    depth: true,
+                  }}
+                  style={{ background: 'transparent' }} // Make canvas background transparent
+                  dpr={isMobile ? [1, 1.5] : [1, 2]} // Lower pixel ratio on mobile
+                >
+                  <OrbitControls 
+                    enableZoom={false} 
+                    enablePan={false} 
+                    minPolarAngle={Math.PI / 2} 
+                    maxPolarAngle={Math.PI / 2}
+                    enableDamping={!isMobile} // Disable damping on mobile
+                  />
                   <Environment preset="studio" environmentIntensity={0.7} />
                   <Center>
-                    <LaptopContainer startAnimation={startLaptopAnimation} />
+                    <LaptopContainer startAnimation={startLaptopAnimation} isMobile={isMobile} />
                   </Center>
                 </Canvas>
               </div>
