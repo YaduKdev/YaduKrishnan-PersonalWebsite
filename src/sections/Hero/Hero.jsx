@@ -55,7 +55,7 @@ const Hero = ({ startLaptopAnimation = false }) => {
                 </a>
               </div>
               <div className='w-full h-[35%] sm:h-1/2 lg:h-3/5 xl:w-3/5'>
-                <Canvas 
+                {/* <Canvas 
                   camera={{fov: 15, position: [0, 0, 110]}}
                   gl={{
                     antialias: !isMobile, // Disable antialiasing on mobile for better performance
@@ -66,6 +66,17 @@ const Hero = ({ startLaptopAnimation = false }) => {
                   }}
                   style={{ background: 'transparent' }} // Make canvas background transparent
                   dpr={isMobile ? [1, 1.5] : [1, 2]} // Lower pixel ratio on mobile
+                > */}
+                <Canvas 
+                  shadows 
+                  dpr={[1, 2]} // Limits resolution on high-end phones to prevent GPU lag
+                  camera={{ fov: 15, position: [0, 0, 110] }}
+                  gl={{ 
+                    antialias: true, 
+                    alpha: true,
+                    powerPreference: "high-performance", // Hints to Samsung Internet to use the GPU
+                    precision: "mediump" // Better compatibility for mobile shaders
+                  }}
                 >
                   <OrbitControls 
                     enableZoom={false} 
