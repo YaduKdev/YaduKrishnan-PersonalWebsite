@@ -93,17 +93,17 @@ useEffect(() => {
         className="fixed inset-0 z-[100000] bg-white origin-top scale-y-0 flex items-center justify-center"
       >
         <img 
-          src="/opening.png" 
+          src="/opening-xl.png" 
           alt="Opening" 
           className="w-[90%] h-[90%] object-contain hidden xl:flex"
         />
         <img 
-          src="/opening-tab.png" 
+          src="/opening-md.png" 
           alt="Opening" 
           className="w-[90%] h-[90%] object-contain hidden md:flex xl:hidden"
         />
         <img 
-          src="/opening-mob.png" 
+          src="/opening-sm.png" 
           alt="Opening" 
           className="w-[90%] h-[90%] object-contain md:hidden"
         />
