@@ -1,91 +1,94 @@
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber';
 import gsap from 'gsap';
 
 const LaptopContainer = ({ startAnimation = false }) => {
     const { scene } = useGLTF('/laptop.glb');
-    const screenRef = useRef();
+    const hingeRef = useRef();
     const videoRef = useRef();
     const videoTextureRef = useRef();
     const hasAnimated = useRef(false);
     
-    const rotationState = useRef({ x: THREE.MathUtils.degToRad(180) });
+    // Internal state for GSAP to animate
+    const [animState] = useState({ rotX: THREE.MathUtils.degToRad(180) });
 
     useEffect(() => {
+        // Setup Video
         const video = document.createElement('video');
         video.src = '/hero-video-compressed.mp4';
         video.muted = true;
         video.loop = true;
         video.playsInline = true;
         video.crossOrigin = 'anonymous';
-        video.preload = 'auto';
-        
+        videoRef.current = video;
+
         const texture = new THREE.VideoTexture(video);
         texture.colorSpace = THREE.SRGBColorSpace;
-        texture.minFilter = THREE.LinearFilter;
-        texture.magFilter = THREE.LinearFilter;
-        texture.generateMipmaps = false;
-
-        videoRef.current = video;
         videoTextureRef.current = texture;
 
-        video.play().catch(() => {
-            // Silently fail for autoplay blocks; handled in startAnimation effect
-        });
-
+        // Setup Model
         scene.traverse(child => {
-            if (child.isMesh && child.name === 'matte') {
+            // 1. ANIMATION FIX: Keep this OUTSIDE the mesh-only check if needed, 
+            // but usually hinges are meshes or groups.
+            const possibleNames = ['screen', 'lid', 'top', 'hinge'];
+            if (possibleNames.some(name => child.name.toLowerCase().includes(name))) {
+                hingeRef.current = child;
+                child.rotation.x = THREE.MathUtils.degToRad(180);
+            }
+
+            // 2. MATERIAL FIX:
+            if (child.isMesh && child.name.toLowerCase().includes('matte')) {
                 child.material.map = texture;
-                child.material.color = new THREE.Color(0xffffff);
                 
-                // Enhanced visibility settings
+                // Increase emissive to make the video bright (fixes the "dim" issue)
                 child.material.emissive = new THREE.Color(0xffffff);
                 child.material.emissiveMap = texture;
-                child.material.emissiveIntensity = 0.2; // Subtly brightens the video
-                child.material.toneMapped = false;
-                child.material.metalness = 0;
-                child.material.roughness = 1;
+                child.material.emissiveIntensity = 1.5; // Adjusted for better brightness
                 
+                // Fix the white glare on the right
+                child.material.roughness = 1;
+                child.material.metalness = 0;
+                
+                // This line specifically kills that "Studio" light reflection
+                if (child.material.envMapIntensity !== undefined) {
+                    child.material.envMapIntensity = 0; 
+                }
+
+                child.material.toneMapped = false;
                 child.material.needsUpdate = true;
-            }
-            if (child.name === 'screen') {
-                screenRef.current = child;
-                child.rotation.x = rotationState.current.x;
             }
         });
 
         return () => {
             video.pause();
             texture.dispose();
-            video.src = "";
-            video.load();
         };
     }, [scene]);
 
+    // THE WATCHER: This handles the first-load vs refresh logic
     useEffect(() => {
-        if (startAnimation && !hasAnimated.current) {
+        // Proceed only if the prop is true AND the model is ready
+        if (startAnimation && hingeRef.current && !hasAnimated.current) {
             hasAnimated.current = true;
-            
-            // Re-trigger play on user interaction/scroll
-            if (videoRef.current) {
-                videoRef.current.play().catch(() => {});
-            }
 
-            gsap.to(rotationState.current, {
-                x: THREE.MathUtils.degToRad(90),
+            if (videoRef.current) videoRef.current.play().catch(() => {});
+
+            gsap.to(animState, {
+                rotX: THREE.MathUtils.degToRad(90),
                 duration: 1.5,
+                delay: 0.3, // Buffer for curtain reveal
                 ease: "power2.inOut"
             });
         }
-    }, [startAnimation]);
+    }, [startAnimation, scene]); // Adding 'scene' ensures it triggers if load finishes LATER than the signal
 
     useFrame(() => {
-        if (screenRef.current) {
-            screenRef.current.rotation.x = rotationState.current.x;
+        if (hingeRef.current) {
+            hingeRef.current.rotation.x = animState.rotX;
         }
-        if (videoTextureRef.current) {
+        if (videoTextureRef.current && videoRef.current?.readyState >= 2) {
             videoTextureRef.current.needsUpdate = true;
         }
     });
@@ -94,7 +97,8 @@ const LaptopContainer = ({ startAnimation = false }) => {
         <group position={[0, -13.5, 0]}>
             <primitive object={scene} />
         </group>
-    )
-}
+    );
+};
 
 export default LaptopContainer;
+useGLTF.preload('/laptop.glb');

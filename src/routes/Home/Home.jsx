@@ -16,7 +16,7 @@ const Home = () => {
   const [startLaptopAnimation, setStartLaptopAnimation] = useState(isInternalNav);
 
   const handleCurtainReveal = () => {
-    // Start laptop animation after curtain reveals
+    // This is triggered by the Preloader timeline when the curtain moves up
     setStartLaptopAnimation(true);
   };
 
@@ -34,7 +34,12 @@ const Home = () => {
           onCurtainReveal={handleCurtainReveal}
         />
       )}
+      
+      {/* Hero receives the state from Home. 
+          Make sure Hero.jsx doesn't have its own internal 'startLaptopAnimation' state!
+      */}
       <Hero startLaptopAnimation={startLaptopAnimation} />
+      
       <About />
       <Services />
       <ProjectsPreview />
@@ -44,4 +49,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
