@@ -59,6 +59,13 @@ const Hero = ({ isMobile = false, startLaptopAnimation }) => {
           >
             Web Developer
           </h2>
+          <p
+            onMouseEnter={() => gsap.to('#cursor', { scale: 8, duration: 0.3 })} 
+            onMouseLeave={() => gsap.to('#cursor', { scale: 1, duration: 0.3 })}
+            className="hero-text-item text-xl md:text-2xl xl:text-2.5xl font-body leading-none tracking-tight font-light text-white mt-2"
+          >
+            3+ Years of Experience
+          </p>
           
           <a href={cV} download="Yadu Krishnan - CV.pdf" className="hidden xl:block hero-text-item mt-4">
             <button onMouseEnter={() =>gsap.to('#cursor', {scale: 0, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="uppercase font-heading border-2 text-center min-w-51.25 px-8 lg:px-12 text-lg md:text-xl py-2 lg:py-3 rounded-full transition-colors ease-in-out duration-200 cursor-[url('/pointer.png'),pointer] border-[#4D1601] hover:border-[#691f01] bg-[#4D1601] hover:bg-[#691f01] hidden xl:flex xl:text-center">
