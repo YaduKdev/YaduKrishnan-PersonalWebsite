@@ -7,7 +7,7 @@ export const projects = [
         image: "/project1.png",
         color: "#0c5bd6",
         secondaryColor: "#ffffff",
-        link: "https://musicmate-production.up.railway.app/",
+        link: "https://musicmate.yadukrishnan-sde.com/",
         Code: "https://github.com/YaduKdev/musicmate"
     },
     {
@@ -18,7 +18,7 @@ export const projects = [
         image: "/project2.png",
         color: "#5f0f75",
         secondaryColor: "#ffffff",
-        link: "https://plum-echidna-342435.hostingersite.com/",
+        link: "https://wearhaus.yadukrishnan-sde.com/",
         CodeView: "https://github.com/YaduKdev/wearhaus-view",
         CodeApi: "https://github.com/YaduKdev/wearhaus-api"
     },
@@ -30,7 +30,7 @@ export const projects = [
         image: "/project3.png",
         color: "#e80000",
         secondaryColor: "#ffffff",
-        link: "https://magenta-gnat-343856.hostingersite.com/",
+        link: "https://cinematix.yadukrishnan-sde.com/",
         CodeView: "https://github.com/YaduKdev/cinematix-view",
         CodeApi: "https://github.com/YaduKdev/cinematix-api"
     },
