@@ -4,7 +4,7 @@ const Services = () => {
   const toolkitData = {
     frontend: ["HTML", "CSS", "Javascript", "React JS", "Angular", "Redux", "NgRX", "GSAP", "Motion", "MUI", "Material UI", "Shadcn", "Bootstrap", "SASS", "Tailwind CSS"],
     backend: ["Javascript", "Node JS", "Express", "MongoDB", "MySQL", "Postgres", "Socket IO", "Rest APIs", "Git"],
-    otherTools: ["Python", "Photoshop", "GIMP", "Premiere Pro", "DaVinci Resolve", "InDesign"]
+    otherTools: ["Agile & Scrum Methodologies", "Unit Testing", "Integration Testing", "LAN / WAN Configuration", "Python"]
   }
 
   return (
@@ -39,7 +39,7 @@ const Services = () => {
           <div className="main-container grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 items-center">
             <div className="flex gap-6 lg:gap-8">
               <span onMouseEnter={() =>gsap.to('#cursor', {scale: 8, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="text-gray-800 text-lg lg:text-2xl font-heading tracking-wide block mb-4">03</span>
-              <h2 onMouseEnter={() =>gsap.to('#cursor', {scale: 8, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="text-[8vw] md:text-6xl font-heading font-bold leading-none">Other Tools</h2>
+              <h2 onMouseEnter={() =>gsap.to('#cursor', {scale: 8, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="text-[8vw] md:text-6xl font-heading font-bold leading-none">Tools & Systems</h2>
             </div>
             <div className="flex items-center">
               <div onMouseEnter={() =>gsap.to('#cursor', {scale: 8, duration: 0.3})} onMouseLeave={() =>gsap.to('#cursor', {scale: 1, duration: 0.3})} className="text-lg lg:text-3xl leading-relaxed uppercase flex items-center flex-wrap">{ toolkitData.otherTools.map((tool, idx) => <div key={idx} className='flex justify-center items-center font-semibold'>{tool}&nbsp;<img src='/bottle-cap.png' alt='spinning-bottle-cap' className={`marquee-star w-4 lg:w-6 ${idx === toolkitData.otherTools.length - 1 ? 'hidden' : ''}`} />&nbsp;</div>) }</div>
